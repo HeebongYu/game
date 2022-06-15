@@ -49,6 +49,9 @@
       <canvas id="canvas"></canvas>
       <img src="img/plane.png" alt="planeImg" />
       <img src="img/missile01.png" alt="missileImg1" />
+      <img src="img/missile02.png" alt="missileImg2" />
+      <img src="img/missile03.png" alt="missileImg3" />
+      <img src="img/missile04.png" alt="missileImg4" />
     </main>
     <script>
       // canvas 정의
@@ -68,6 +71,12 @@
       planeImg.src = "img/plane.png";
       var missileImg1 = new Image();
       missileImg1.src = "img/missile01.png";
+      var missileImg2 = new Image();
+      missileImg2.src = "img/missile02.png";
+      var missileImg3 = new Image();
+      missileImg3.src = "img/missile03.png";
+      var missileImg4 = new Image();
+      missileImg4.src = "img/missile04.png";
 
       // 화면 크기 변경 감지
       window.addEventListener("resize", () => {
@@ -102,11 +111,12 @@
           this.y = 200;
           this.width = canvas.width / 40;
           this.height = canvas.width / 80;
+          this.img = missileImg1;
         }
         draw() {
           ctx.fillStyle = "red";
           ctx.fillRect(this.x, this.y, this.width, this.height);
-          ctx.drawImage(missileImg1, this.x, this.y, this.width, this.height);
+          ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
       }
 
@@ -132,6 +142,7 @@
         if (timer % 120 === 0) {
           var missile = new Missile();
           missile.y = Math.floor(Math.random() * canvas.height);
+          // missile.img = missileImg + Math.floor(Math.random() * 3);
           missileArr.push(missile);
         }
 
